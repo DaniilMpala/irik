@@ -7,8 +7,19 @@
 #include <map>
 #include <list>
 
+
 using namespace std;
 
+void gotoxy(int xpos, int ypos)
+{
+	COORD scrn;
+
+	HANDLE hOuput = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	scrn.X = xpos; scrn.Y = ypos;
+
+	SetConsoleCursorPosition(hOuput, scrn);
+}
 float func(float x) {
 	return (x * x - 2 * x + 2) / (x - 1);
 }
@@ -135,16 +146,17 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	setlocale(LC_ALL, "Russian");
-	int operation, N, mi, ci, ii, pp, A[3][4],
-		sumDeneg(0), sumCommis(0), sumVsego(0), N1, N2;
-	float r, R, h, l, x, a, b, y, S, p, n, m, c, mii, B[4][2], C[3][5],
+	int operation, N, mi, ci, ii, pp,
+		 N1, N2;
+	float r, R, h, l, x, a, b, y, S, p, n, m, c, mii, B[4][2], C[3][5], A[3][4], sumDeneg(0), sumCommis(0), sumVsego(0),
 		sellerNaibInt(0.0f), sellerNaimInt(1000.0f),
 		sellerComNaibInt(0.0f), sellerComNaimInt(1000.0f);
 	float const pi = 3.14f;
-	string lines, _lines, sinysoid[50][12], sellerNaib, sellerNaim, sellerComNaib, sellerComNaim;
+	string lines, _lines, sinysoid[50][10], sellerNaib, sellerNaim, sellerComNaib, sellerComNaim;
 	char tmp;
 	bool next(true);
 	long digital(0);
+	float ready = true;
 	list<int> listik;
 	map<char, int> translitMap { 
 		{ 'I', 1 }, 
@@ -260,7 +272,7 @@ int main()
 				{
 					r = i / 100;
 					mii = (S * r * pow((1 + r), n)) / (12 * (pow((1 + r), n) - 1));
-					if (fabs(mii - m) < 2)
+					if (fabs(mii - m) < 0.0001)
 					{
 						pp = i;
 						break;
@@ -269,7 +281,10 @@ int main()
 				cout << (pp == 0 ? "Слишком малы выплаты m" : to_string(pp));
 				break;
 			case 3://Домашнее задание № 3 - «Копирование файла»
-				filesave("1145h15h2h5h4h632h3h6h7h");
+				cout << "текст ";
+				cin >> lines;
+				cout << lines << endl;
+				filesave("fegegeg");
 				break;
 			case 4://Домашнее задание № 3 - «Фильтр»
 				lines = fileread();
@@ -344,29 +359,34 @@ int main()
 				}
 				break;
 			case 4://Домашнее задание № 4 - «Былая слава»
-				cout << "* * * * * * * *----------------------------------" << endl;
-				cout << "* * * * * * * *----------------------------------" << endl;
-				cout << "* * * * * * * *----------------------------------" << endl;
-				cout << "* * * * * * * *----------------------------------" << endl;
-				cout << "* * * * * * * *----------------------------------" << endl;
-				cout << "* * * * * * * *----------------------------------" << endl;
-				cout << "-------------------------------------------------" << endl;
-				cout << "-------------------------------------------------" << endl;
-				cout << "-------------------------------------------------" << endl;
-				cout << "-------------------------------------------------" << endl;
-				cout << "-------------------------------------------------" << endl;
-				cout << "-------------------------------------------------" << endl;
-				cout << "-------------------------------------------------" << endl;
+				for (int i = 0; i < 13; i++)
+				{
+					for (int j = 0; j < 50; j++)
+					{
+						if (i <= 6) {
+							if (j < 41) {
+								if (j <= 8)
+									cout << "* ";
+								else
+									cout << "-";
+							}
+						}
+						else {
+							cout << "-";
+						}
+						
+					}
+					cout << endl;
+				}
 				break;
 			case 5://Домашнее задание № 4 - «Синусоида»
-				cout << "         *                          |        *                          " << endl;
-				cout << "     *       *                      |    *       *                      " << endl;
-				cout << "  *             *                   | *             *                   " << endl;
-				cout << "*-----------------*-----------------*-----------------*----------------*" << endl;
-				cout << "                    *             * |                   *             * " << endl;
-				cout << "                       *       *    |                       *      *    " << endl;
-				cout << "                           *        |                          *        " << endl;
-
+				for (int i = 0; i < 39; i++) {
+					gotoxy(i * 2, 12);
+					cout << "-";
+					gotoxy(i*2, 12-sin(i*1.4/3.14)*7);
+					cout << "*";
+				}
+				gotoxy(0, 20);
 				break;
 			case 6://Домашнее задание № 4 - «Автоматный распознаватель»
 				cout << "\nРаботает while !: " << endl;
@@ -407,18 +427,18 @@ int main()
 			case 8://Домашнее задание № 4 - «Умножение матриц»
 				//A продовцы\товары    В товары\цена-Комиссионные   C как в задание
 
-				A[0][0] = 5; A[0][1] = 2; A[0][2] = 0; A[0][3] = 10;
-				A[1][0] = 3; A[1][1] = 5; A[1][2] = 2; A[1][3] = 5;
-				A[2][0] = 20; A[2][1] = 0; A[2][2] = 0; A[2][3] = 0;
+				A[0][0] = 5.0f; A[0][1] = 2.0f; A[0][2] = 0.0f; A[0][3] = 10.0f;
+				A[1][0] = 3.0f; A[1][1] = 5.0f; A[1][2] = 2.0f; A[1][3] = 5.0f;
+				A[2][0] = 20.0f; A[2][1] = 0.0f; A[2][2] = 0.0f; A[2][3] = 0.0f;
 
 				B[0][0] = 1.2f; B[0][1] = 0.5f;
 				B[1][0] = 2.8f; B[1][1] = 0.4f;
 				B[2][0] = 5.0f; B[2][1] = 1.0f;
 				B[3][0] = 2.0f; B[3][1] = 1.5f;
 
-				C[0][0] = 0; C[0][1] = 0;
-				C[1][0] = 0; C[1][1] = 0;
-				C[2][0] = 0; C[2][1] = 0;
+				C[0][0] = 0.0f; C[0][1] = 0.0f;
+				C[1][0] = 0.0f; C[1][1] = 0.0f;
+				C[2][0] = 0.0f; C[2][1] = 0.0f;
 
 				for (int i = 0; i < 3; i++)
 				{
@@ -464,6 +484,16 @@ int main()
 					}
 
 				}
+
+				for (int i = 0; i < 3; i++)
+				{
+					for (int j = 0; j < 2; j++)
+					{
+						cout << C[i][j] << " ";
+					}
+					cout << endl;
+				}
+
 				cout << "Выручил больше денег: " << sellerNaib << ", а меньше денег: " << sellerNaim << endl;
 				cout << "Выручил больше комиссионных: " << sellerComNaib << ", а меньше денег: " << sellerComNaim << endl;
 				cout << "Общая сумма вырученных денег: " << sumDeneg << endl;
@@ -471,12 +501,31 @@ int main()
 				cout << "Общая сумма денег прошедших через руки продовцов: " << sumVsego << endl;
 				break;
 			case 9://Домашнее задание № 4 - «Системы счисления»
-				cout << "Введите число: ";
-				cin >> lines;
-				cout << "Введите систему счисления числа: ";
-				cin >> N1;
-				cout << "Введите систему счисления в какую надо преобразовать: ";
-				cin >> N2;
+				//float ready = true;
+				while (ready) {
+					ready = false;
+					cout << "Введите число: ";
+					cin >> lines;
+					cout << "Введите систему счисления числа: ";
+					cin >> N1;
+					cout << "Введите систему счисления в какую надо преобразовать: ";
+					cin >> N2;
+
+					for (int i = 0; i < lines.length(); i++)
+					{
+						if (!isdigit(lines[i]) && toInt(lines[i]) >= N1) {
+							ready = true;
+							break;
+						}
+						if (isdigit(lines[i]) && charToInt(lines[i]) >= N1) {
+							ready = true;
+							break;
+						}
+					}
+					if (ready) {
+						cout << "Вы ввели число не входящее в исходную систему счисления!" << endl;
+					}
+				}
 				//переводим в 10-сятичную
 				for (int i = 0; i < lines.length(); i++) {
 					if (!isdigit(lines[i]))
