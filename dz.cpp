@@ -1,562 +1,455 @@
-﻿#include <string>
-#include <iostream>
-#include <iomanip>
-#include <fstream>
-#include <windows.h>
-#include <cmath>
-#include <map>
-#include <list>
-
-
-using namespace std;
-
-void gotoxy(int xpos, int ypos)
-{
-	COORD scrn;
-
-	HANDLE hOuput = GetStdHandle(STD_OUTPUT_HANDLE);
-
-	scrn.X = xpos; scrn.Y = ypos;
-
-	SetConsoleCursorPosition(hOuput, scrn);
-}
-float func(float x) {
-	return (x * x - 2 * x + 2) / (x - 1);
-}
-void filesave(string str) {
-	ofstream ofs("C:\\Users\\fegff\\Desktop\\test.txt", ofstream::out);
-	if (ofs.is_open())
-	{
-		ofs << str << std::endl;
-	}
-	ofs.close();
-}
-string fileread() {
-	string line, returning;
-
-	ifstream in("C:\\Users\\fegff\\Desktop\\test.txt");
-	if (in.is_open())
-	{
-		while (getline(in, line))
-		{
-			returning += line;
+// @ts-nocheck
+// ==UserScript==
+// @name         MireaTasher
+// @namespace    http://tampermonkey.net/
+// @version      1.8
+// @description  sync students mark
+// @license      MIT
+// @updateURL    https://openuserjs.org/meta/DimaMakarov1941yandex.ru/MireaTasher.meta.js
+// @author       anonim
+// @downloadURL  https://openuserjs.org/install/DimaMakarov1941yandex.ru/MireaTasher.user.js
+// @require      https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js
+// @require      https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js
+// @require      https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js
+// @require      https://raw.githubusercontent.com/emn178/js-sha256/master/build/sha256.min.js
+// @match        https://online-edu.mirea.ru/*
+// @grant        none
+// ==/UserScript==
+var _0x343e = [
+	"74942:web:",
+	"replace",
+	"ta\x20=*(",
+	"ent",
+	"appendChil",
+	"вете.</div",
+	"></div><di",
+	"\x20номера\x20от",
+	"initialize",
+	"from",
+	"c90838cff1",
+	"createElem",
+	"30%",
+	"lue=\x22Пожал",
+	"parentNode",
+	"=\x22UserAnsw",
+	"ref",
+	"slice",
+	"floor",
+	"fixed",
+	"ById",
+	"set",
+	"верен\x20в\x20от",
+	"green",
+	"at:\x20left;\x22",
+	"user/",
+	"qtext",
+	"ButtonForB",
+	"style",
+	"&#12288;<i",
+	"та,\x20опишит",
+	"sByClassNa",
+	"UserAnswer",
+	"keys",
+	"ветов,\x20они",
+	"1:10168479",
+	"val",
+	"rea\x20style=",
+	"questions/",
+	"⬆\x20ответ\x20|\x20",
+	"b.appspot.",
+	"мочь\x20разви",
+	"\x20каждый\x20ра",
+	"ится.<div\x20",
+	"length",
+	";\x22><p></p>",
+	"ьный\x20ответ",
+	"е\x20ответ\x20сл",
+	"loat:\x20left",
+	"ant\x20get\x20da",
+	"полем\x20и\x20от",
+	"onclick",
+	"EWmrwlj4Bm",
+	"вет\x20сохран",
+	"database",
+	"com",
+	"none",
+	"ответ)</p>",
+	"ветивших⬆\x20",
+	"див\x20правил",
+	"10px;\x22>Впи",
+	"%\x20(",
+	"innerHTML",
+	"Comment",
+	"вопрос.",
+	"\x20нет\x20внизу",
+	"о\x20рядом\x20с\x20",
+	"value",
+	"овами,\x20не\x20",
+	"\x20можете\x20по",
+	"712befd564",
+	">\x20Пожалуйс",
+	"e=\x22font-si",
+	"iamsure",
+	"onblur",
+	"herit;\x22\x20va",
+	"600",
+	"ze:10px;\x22=",
+	"filter",
+	"<hr/><p>Вы",
+	"<p\x20style=\x22",
+	"\x20(просмотр",
+	"Вопрос",
+	"\x20|\x20",
+	"шите\x20ответ",
+	"b.firebase",
+	",\x20если\x20его",
+	"app.com",
+	"onload",
+	"Посмотрел\x20",
+	"тию\x20проект",
+	"#9f8200",
+	"Br><p\x20styl",
+	"blue",
+	"accesshide",
+	"red",
+	"/Вопрос",
+	"nput\x20id=\x22i",
+	"\x20суда.\x22\x20id",
+	"устое\x20мест",
+	"includes",
+	"forEach",
+	".<hr/>",
+	"ox\x22\x20name=\x22",
+	"r-headings",
+	"жать\x20\x20на\x20п",
+	"14px",
+	"свой\x20ответ",
+	"cked\x22>\x20Я\x20у",
+	"firebaseio",
+	"className",
+	"App",
+	"erDB\x22></te",
+	"Error,\x20i\x20c",
+	"mireatestd",
+	".com",
+	"жмите\x20на\x20п",
+	"torAll",
+	"amsure\x22\x20ty",
+	"getElement",
+	"a[title=\x22П",
+	"querySelec",
+	"10px\x2020px",
+	"><Br><Br><",
+	"white",
+	"checked",
+	"🤔❓",
+	"росмотр\x20пр",
+	"\x20буквы\x20или",
+];
+(function (_0x31412e, _0x56b022) {
+	var _0x343eb0 = function (_0x2b0a2e) {
+		while (--_0x2b0a2e) {
+			_0x31412e["push"](_0x31412e["shift"]());
 		}
-	}
-	in.close(); 
-	return returning;
-}
-int charToInt(char c) {
-	return c - '0';
-}
-int sign(int x) {
-	return x >= 0
-				? x > 0 
-					? 1
-					: 0
-				: -1 ;
-}
-bool search(string str, char charing) {
-	bool yesNo = false;
-	for (int i = 0; i < str.length(); i++)
-	{
-		if (str[i] == charing) yesNo = true;
-	}
-	return yesNo;
-}
-int Sf(int m, int c, int i) {
-	if (i >= 0) {
-		return (m * Sf(m, c, i - 1) + i) % c;
-	}
-	else {
-		return 1;
-	}
-}
-int toInt(char charing) {
-	switch (charing) {
-		case 'A': return 10;
-		case 'B': return 11;
-		case 'C': return 12;
-		case 'D': return 13;
-		case 'E': return 14;
-		case 'F': return 15;
-		case 'G': return 16;
-		case 'H': return 17;
-		case 'I': return 18;
-		case 'J': return 19;
-		case 'K': return 20;
-		case 'L': return 21;
-		case 'M': return 22;
-		case 'N': return 23;
-		case 'O': return 24;
-		case 'P': return 25;
-		case 'Q': return 26;
-		case 'R': return 27;
-		case 'S': return 28;
-		case 'T': return 29;
-		case 'U': return 30;
-		case 'V': return 31;
-		case 'W': return 32;
-		case 'X': return 33;
-		case 'Y': return 34;
-		case 'Z': return 35;
-	}
-}
-string Char(int charing) {
-	switch (charing) {
-	case 10: return "A";
-	case 11: return "B";
-	case 12: return "C";
-	case 13: return "D";
-	case 14: return "E";
-	case 15: return "F";
-	case 16: return "G";
-	case 17: return "H";
-	case 18: return "I";
-	case 19: return "J";
-	case 20: return "K";
-	case 21: return "L";
-	case 22: return "M";
-	case 23: return "N";
-	case 24: return "O";
-	case 25: return "P";
-	case 26: return "Q";
-	case 27: return "R";
-	case 28: return "S";
-	case 29: return "T";
-	case 30: return "U";
-	case 31: return "V";
-	case 32: return "W";
-	case 33: return "X";
-	case 34: return "Y";
-	case 35: return "Z";
-	}
-}
-list<int> random(int m, int i, int c) {
-	list<int> s = { rand() };
-	for (int j = 0; j < i; j++)
-	{
-		s.push_back((m * s.back() + j) % c);
-	}
-	return s;
-}
-
-
-int main()
-{
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-	setlocale(LC_ALL, "Russian");
-	int operation, N, mi, ci, ii, pp,
-		 N1, N2;
-	float r, R, h, l, x, a, b, y, S, p, n, m, c, mii, B[4][2], C[3][5], A[3][4], sumDeneg(0), sumCommis(0), sumVsego(0),
-		sellerNaibInt(0.0f), sellerNaimInt(1000.0f),
-		sellerComNaibInt(0.0f), sellerComNaimInt(1000.0f);
-	float const pi = 3.14f;
-	string lines, _lines, sinysoid[50][10], sellerNaib, sellerNaim, sellerComNaib, sellerComNaim;
-	char tmp;
-	bool next(true);
-	long digital(0);
-	float ready = true;
-	list<int> listik;
-	map<char, int> translitMap { 
-		{ 'I', 1 }, 
-		{ 'V', 5 },
-		{ 'X', 10 },
-		{ 'L', 50 },
-		{ 'C', 100 },
-		{ 'D', 500 },
-		{ 'M', 1000 }
 	};
-	while (true) {
-		cout << "\nВведите номер ДЗ: ";
-		cin >> operation;
-		switch (operation)
-		{
-		case 1:
-			cout << "Уже было сделано :)";
-			break;
-		case 2:
-			cout << "Введите номер Задачи: ";
-			cin >> operation;
-			switch (operation)
-			{
-			case 1://Домашнее задание № 2 - «Конус»
-				cout << "Введите r : ";
-				cin >> r;
-				cout << "Введите R : ";
-				cin >> R;
-				cout << "Введите h : ";
-				cin >> h;
-				cout << "Введите l : ";
-				cin >> l;
-				cout << "V = " << (pi * h * (pow(R, 2) + R * r + pow(r, 2)) / 3) << " S = " << pi * (R * R + (R + r) * l + r * r);
-				break;
-			case 2://Домашнее задание № 2 - «Разветвление»
-				cout << "Введите x : ";
-				cin >> x;
-				cout << "Введите a : ";
-				cin >> a;
-				cout << "w = " << (
-					abs(x) < 1
-					? a * log(abs(x))
-					: sqrt(a - x * x)
-					);
-				break;
-			case 3://Домашнее задание № 2 - «Функция»
-				cout << "Введите x : ";
-				cin >> x;
-				cout << "Введите y : ";
-				cin >> y;
-				cout << "Введите b : ";
-				cin >> b;
-				cout << "z = " << (
-					b - y > 0 && b - x > 0
-					? to_string(log(b - y) * sqrt(b - x))
-					: "Значение не может быть вычеслено так как один из оргументов меньше 0"
-					);
-				break;
-			case 4://Домашнее задание № 2 - «Порядок»
-				cout << "Введите N : ";
-				cin >> N;
-
-				if (N > 0)
-					for (int i = N; i < N + 10; i++)
-					{
-						cout << i << " ";
-					}
-				else
-					cout << "N - натуральное число, оно не может быть <=0";
-				break;
-			case 5://Домашнее задание № 2 - «Табуляция»
-				for (float i = -4; i <= 4; i += 0.5)
-				{
-					cout << setw(5) << i << "|";
-				}
-				cout << "\n";
-				for (float i = -4; i <= 4; i += 0.5)
-				{
-					if (i != 1)
-						cout << setw(5) << round(func(i) * 100) / 100 << "|";
-					else
-						cout << setw(5) << "!= 0 |";
-				}
-				break;
-			default:
-				break;
-			}
-			break;
-		case 3:
-			cout << "Введите номер Задачи: ";
-			cin >> operation;
-			switch (operation)
-			{
-			case 1://Домашнее задание № 3 - «Заем»
-				cout << "Введите S : ";
-				cin >> S;
-				cout << "Введите p : ";
-				cin >> p;
-				cout << "Введите n : ";
-				cin >> n;
-				r = p / 100;
-				cout << "m = " << (S * r * pow((1 + r), n)) / (12 * (pow((1 + r), n) - 1));
-				break;
-			case 2://Домашнее задание № 3 - «Ссуда» 
-				cout << "Введите S : ";
-				cin >> S;
-				cout << "Введите m : ";
-				cin >> m;
-				cout << "Введите n : ";
-				cin >> n;
-				pp = 0;
-				for (float i = 1; i < 10000; i++)//  0 - 10 000% шаг в 1
-				{
-					r = i / 100;
-					mii = (S * r * pow((1 + r), n)) / (12 * (pow((1 + r), n) - 1));
-					if (fabs(mii - m) < 0.0001)
-					{
-						pp = i;
-						break;
-					}
-				}
-				cout << (pp == 0 ? "Слишком малы выплаты m" : to_string(pp));
-				break;
-			case 3://Домашнее задание № 3 - «Копирование файла»
-				cout << "текст ";
-				cin >> lines;
-				cout << lines << endl;
-				filesave("fegegeg");
-				break;
-			case 4://Домашнее задание № 3 - «Фильтр»
-				lines = fileread();
-				for (char ch : lines) {
-					if (isdigit(ch))
-						cout << ch;
-				}
-				break;
-			case 5://Домашнее задание № 3 - «Сортировка букв»
-				cout << "Введите строку из букв : ";
-				cin >> lines;
-				//lines = "qwertyuiopasdfghjklzxcvbnmqwer";
-				for (int j = 0; j < lines.length() - 1; j++) {
-					for (int i = 0; i < lines.length() - 1; i++) {
-						if (lines[i] > lines[i + 1]) {
-							tmp = lines[i + 1];
-							lines[i + 1] = lines[i];
-							lines[i] = tmp;
-						}
-					}
-				}
-				cout << lines;
-				break;
-			default:
-				break;
-			}
-			break;
-		case 4:
-			cout << "Введите номер Задачи: ";
-			cin >> operation;
-			switch (operation)
-			{
-			case 1://Домашнее задание № 4 - «Файл»
-				filesave("554");
-				lines = fileread();
-				x = 0;
-				for (char ch : lines) {
-					if (isdigit(ch))
-						x += charToInt(ch);
-				}
-				cout << x;
-				break;
-			case 2://Домашнее задание № 4 - «Знак числа»
-				cout << "Введите число: ";
-				cin >> x;
-				cout << sign(x);
-				break;
-			case 3://Домашнее задание № 4 - «Геометрические фигуры»
-				cout << "Введите п(прямоугольник) т(треугольник) к(круга): ";
-				cin >> lines;
-				if (search(lines, 'п')) {
-					cout << "Введите a: ";
-					cin >> a;
-					cout << "Введите b: ";
-					cin >> b;
-					cout << "Ответ: " << a * b;
-				}
-				else if (search(lines, 'т')) {
-					cout << "Введите a: ";
-					cin >> a;
-					cout << "Введите b: ";
-					cin >> b;
-					cout << "Введите c: ";
-					cin >> c;
-					p = (a + b + c) / 2;
-					cout << "Ответ: " << sqrt(p * (p - a) * (p - b) * (p - c));//площадь герона
-				}
-				else if (search(lines, 'к')) {
-					cout << "Введите r: ";
-					cin >> r;
-					cout << "Ответ: " << pi * r * r;
-				}
-				break;
-			case 4://Домашнее задание № 4 - «Былая слава»
-				for (int i = 0; i < 13; i++)
-				{
-					for (int j = 0; j < 50; j++)
-					{
-						if (i <= 6) {
-							if (j < 41) {
-								if (j <= 8)
-									cout << "* ";
-								else
-									cout << "-";
-							}
-						}
-						else {
-							cout << "-";
-						}
-						
-					}
-					cout << endl;
-				}
-				break;
-			case 5://Домашнее задание № 4 - «Синусоида»
-				for (int i = 0; i < 39; i++) {
-					gotoxy(i * 2, 12);
-					cout << "-";
-					gotoxy(i*2, 12-sin(i*1.4/3.14)*7);
-					cout << "*";
-				}
-				gotoxy(0, 20);
-				break;
-			case 6://Домашнее задание № 4 - «Автоматный распознаватель»
-				cout << "\nРаботает while !: " << endl;
-				while (true)
-				{
-					cout << " \nВведите римское число: ";
-					cin >> lines;
-					N = 0;
-					if (lines.length() == 1) {
-						N = translitMap.at(lines[0]);
-					}
-					else {
-						for (int i = 0; i < lines.length(); i++) {
-							if (translitMap.at(lines[i]) < translitMap.at(lines[i + 1])) {
-								N += translitMap.at(lines[i + 1]) - translitMap.at(lines[i]);
-								i++;
-							}
-							else {
-								N += translitMap.at(lines[i]);
-							}
-
-							if (i == lines.length() - 2) {
-								N += translitMap.at(lines[i + 1]);
-								i++;
-							}
-						}
-					}
-
-					cout << N;
-				}
-				break;
-			case 7://Домашнее задание № 4 - «Генератор случайных чисел»
-				listik = random(37, 3, 64);
-				listik = random(25173, 13849, 65537);
-				for (int number : listik)
-					cout << number << endl;
-				break;
-			case 8://Домашнее задание № 4 - «Умножение матриц»
-				//A продовцы\товары    В товары\цена-Комиссионные   C как в задание
-
-				A[0][0] = 5.0f; A[0][1] = 2.0f; A[0][2] = 0.0f; A[0][3] = 10.0f;
-				A[1][0] = 3.0f; A[1][1] = 5.0f; A[1][2] = 2.0f; A[1][3] = 5.0f;
-				A[2][0] = 20.0f; A[2][1] = 0.0f; A[2][2] = 0.0f; A[2][3] = 0.0f;
-
-				B[0][0] = 1.2f; B[0][1] = 0.5f;
-				B[1][0] = 2.8f; B[1][1] = 0.4f;
-				B[2][0] = 5.0f; B[2][1] = 1.0f;
-				B[3][0] = 2.0f; B[3][1] = 1.5f;
-
-				C[0][0] = 0.0f; C[0][1] = 0.0f;
-				C[1][0] = 0.0f; C[1][1] = 0.0f;
-				C[2][0] = 0.0f; C[2][1] = 0.0f;
-
-				for (int i = 0; i < 3; i++)
-				{
-					cout << "Продовец - " + to_string(i + 1) + "  ";
-					for (int j = 0; j < 4; j++)
-					{
-						cout << setw(5) << A[i][j] << "   ";
-					}
-					cout << "\n";
-				}
-
-				cout << "\n";
-
-				for (int i = 0; i < 3; i++)
-				{
-					for (int j = 0; j < 4; j++)
-					{
-						C[i][0] = C[i][0] + A[i][j] * (B[j][0] - B[j][1]);
-						C[i][1] = C[i][1] + A[i][j] * B[j][1];
-						sumDeneg += A[i][j] * (B[j][0] - B[j][1]);
-						sumCommis += A[i][j] * B[j][1];
-						sumVsego += A[i][j] * B[j][0];
-					}
-				}
-
-				for (int i = 0; i < 3; i++)
-				{
-					if (sellerNaibInt < C[i][0]) {
-						sellerNaibInt = C[i][0];
-						sellerNaib = "Продовец " + to_string(i + 1);
-					}
-					if (sellerNaimInt > C[i][0]) {
-						sellerNaimInt = C[i][0];
-						sellerNaim = "Продовец " + to_string(i + 1);
-					}
-					if (sellerComNaibInt < C[i][1]) {
-						sellerComNaibInt = C[i][1];
-						sellerComNaib = "Продовец " + to_string(i + 1);
-					}
-					if (sellerComNaimInt > C[i][1]) {
-						sellerComNaimInt = C[i][1];
-						sellerComNaim = "Продовец " + to_string(i + 1);
-					}
-
-				}
-
-				for (int i = 0; i < 3; i++)
-				{
-					for (int j = 0; j < 2; j++)
-					{
-						cout << C[i][j] << " ";
-					}
-					cout << endl;
-				}
-
-				cout << "Выручил больше денег: " << sellerNaib << ", а меньше денег: " << sellerNaim << endl;
-				cout << "Выручил больше комиссионных: " << sellerComNaib << ", а меньше денег: " << sellerComNaim << endl;
-				cout << "Общая сумма вырученных денег: " << sumDeneg << endl;
-				cout << "Всего комиссионных: " << sumCommis << endl;
-				cout << "Общая сумма денег прошедших через руки продовцов: " << sumVsego << endl;
-				break;
-			case 9://Домашнее задание № 4 - «Системы счисления»
-				//float ready = true;
-				while (ready) {
-					ready = false;
-					cout << "Введите число: ";
-					cin >> lines;
-					cout << "Введите систему счисления числа: ";
-					cin >> N1;
-					cout << "Введите систему счисления в какую надо преобразовать: ";
-					cin >> N2;
-
-					for (int i = 0; i < lines.length(); i++)
-					{
-						if (!isdigit(lines[i]) && toInt(lines[i]) >= N1) {
-							ready = true;
-							break;
-						}
-						if (isdigit(lines[i]) && charToInt(lines[i]) >= N1) {
-							ready = true;
-							break;
-						}
-					}
-					if (ready) {
-						cout << "Вы ввели число не входящее в исходную систему счисления!" << endl;
-					}
-				}
-				//переводим в 10-сятичную
-				for (int i = 0; i < lines.length(); i++) {
-					if (!isdigit(lines[i]))
-						digital += toInt(lines[i]) * pow(N1, lines.length() - i - 1);
-					else
-						digital += charToInt(lines[i]) * pow(N1, lines.length() - i - 1);
-				}
-
-				//переводим в какую требуется
-				lines = "";
-				while (next) {
-					lines.insert(0, (digital % N2 <= 9 ? to_string(digital % N2) : Char(digital % N2)));
-					digital = digital / N2;
-					if (digital < N2) {
-						next = false;
-						lines.insert(0, (digital <= 9 ? to_string(digital) : Char(digital)));
-					}
-				}
-				cout << lines;
-				break;
-			default:
-				break;
-			}
-			break;
-		default:
-			break;
+	_0x343eb0(++_0x56b022);
+})(_0x343e, 0x1ab);
+var _0x2b0a = function (_0x31412e, _0x56b022) {
+	_0x31412e = _0x31412e - 0x148;
+	var _0x343eb0 = _0x343e[_0x31412e];
+	return _0x343eb0;
+};
+var _0x121d6f = _0x2b0a;
+window[_0x121d6f(0x178)] = (async function () {
+	var _0x40e598 = _0x121d6f,
+		_0x89e3cb = document[_0x40e598(0x197) + _0x40e598(0x1c0) + "me"](
+			_0x40e598(0x17e)
+		);
+	if (Array[_0x40e598(0x1aa)](_0x89e3cb)["length"] > 0x0) {
+		function _0x4126c6(
+			_0x8c42ab,
+			_0x554914,
+			_0x4c5a40,
+			_0x56457c,
+			_0x3498b2,
+			_0x240547,
+			_0x26a6c1
+		) {
+			var _0x56ed88 = _0x40e598;
+			_0x26a6c1 = _0x26a6c1 || {
+				position: _0x56ed88(0x1b4),
+				top: 0x64 - 0x6 * _0x554914 + "%",
+				right: _0x56ed88(0x1ad),
+				"z-index": 0x5,
+				fontWeight: _0x56ed88(0x16c),
+				fontSize: _0x56ed88(0x18a),
+				backgroundColor: _0x4c5a40,
+				color: _0x56ed88(0x19c),
+				border: _0x56ed88(0x158),
+				padding: _0x56ed88(0x19a),
+			};
+			let _0x15677b = document[_0x56ed88(0x1ac) + _0x56ed88(0x1a4)]("button"),
+				_0x228e92 = _0x15677b[_0x56ed88(0x1bd)];
+			return (
+				document["body"][_0x56ed88(0x1a5) + "d"](_0x15677b),
+				(_0x15677b[_0x56ed88(0x15e)] = _0x8c42ab),
+				(_0x15677b[_0x56ed88(0x18e)] = _0x56ed88(0x1bc) + "D"),
+				(_0x15677b[_0x56ed88(0x153)] =
+					_0x56ed88(0x191) + _0x56ed88(0x151) + _0x56ed88(0x1a3) != _0x3498b2
+						? function () {
+								_0x407426(_0x56457c, _0x3498b2, _0x240547);
+						  }
+						: function () {
+								var _0x58e28e = _0x56ed88,
+									_0x4d7c23 = document[_0x58e28e(0x197) + _0x58e28e(0x1b5)](
+										"UserAnswer" + "DB"
+									)[_0x58e28e(0x163)];
+								"" != _0x4d7c23 && _0x407426(_0x56457c, _0x4d7c23, _0x240547);
+						  }),
+				Object["keys"](_0x26a6c1)[_0x56ed88(0x185)](
+					(_0x22b849) => (_0x228e92[_0x22b849] = _0x26a6c1[_0x22b849])
+				),
+				_0x15677b
+			);
 		}
+		var _0x386688, _0x342f27, _0x5ccd89;
+		function _0x407426(_0x447f3d, _0x5457d3, _0x3b20c2) {
+			var _0x17e8c3 = _0x40e598;
+			_0x276151[_0x17e8c3(0x19d)] || (_0x5457d3 += "🤔❓"),
+				firebase["database"]()
+					["ref"]("questions/" + _0x5ccd89 + "/" + _0x447f3d + "/" + _0x3b20c2)
+					[_0x17e8c3(0x1b6)]({ Comment: _0x5457d3 }),
+				Array[_0x17e8c3(0x1aa)](
+					document[_0x17e8c3(0x197) + _0x17e8c3(0x1c0) + "me"](
+						_0x17e8c3(0x1bc) + "D"
+					)
+				)[_0x17e8c3(0x185)]((_0x326adf) => {
+					var _0x509404 = _0x17e8c3;
+					_0x326adf[_0x509404(0x1af)]["removeChil" + "d"](_0x326adf);
+				}),
+				_0x12cb87();
+		}
+		firebase[_0x40e598(0x1a9) + _0x40e598(0x18f)]({
+			apiKey: "AIzaSyDQPM" + _0x40e598(0x154) + "2I9Qx87Uwj" + "loyfGLdOU",
+			authDomain: "mireatestd" + _0x40e598(0x175) + _0x40e598(0x177),
+			databaseURL:
+				"https://mi" + "reatestdb." + _0x40e598(0x18d) + _0x40e598(0x193),
+			projectId: "mireatestd" + "b",
+			storageBucket: _0x40e598(0x192) + _0x40e598(0x148) + _0x40e598(0x157),
+			messagingSenderId: "1016847974" + "942",
+			appId:
+				_0x40e598(0x1c4) +
+				_0x40e598(0x1a1) +
+				_0x40e598(0x1ab) +
+				_0x40e598(0x166) +
+				"0f",
+		});
+		let _0x115c69 = document[_0x40e598(0x199) + _0x40e598(0x195)](
+			_0x40e598(0x198) + _0x40e598(0x19f) + "офиля\x22]"
+		);
+		_0x115c69[_0x40e598(0x185)]((_0x39c297) => {
+			var _0x22ce45 = _0x40e598;
+			_0x342f27 = sha224(_0x39c297[_0x22ce45(0x15e)]);
+		}),
+			(_0x115c69 = Array[_0x40e598(0x1aa)](
+				document[_0x40e598(0x197) + _0x40e598(0x1c0) + "me"](
+					"page-heade" + _0x40e598(0x188)
+				)
+			)),
+			(_0x5ccd89 = _0x115c69[0x0]["innerHTML"][_0x40e598(0x1b2)](0x4, 0xf)),
+			(_0x115c69 = Array["from"](
+				document[_0x40e598(0x197) + "sByClassNa" + "me"](_0x40e598(0x1bb))
+			)),
+			(_0x386688 = sha224(_0x115c69[0x0][_0x40e598(0x15e)])[_0x40e598(0x1b2)](
+				0x0,
+				0x38
+			)),
+			firebase["database"]()
+				["ref"](_0x40e598(0x1ba) + _0x342f27 + "/" + _0x5ccd89)
+				[_0x40e598(0x1b6)]({ Author: _0x342f27 }),
+			firebase["database"]()
+				["ref"](
+					_0x40e598(0x1c7) + _0x5ccd89 + "/" + _0x386688 + _0x40e598(0x180)
+				)
+				[_0x40e598(0x1b6)]({ Question: _0x115c69[0x0]["innerHTML"] }),
+			firebase[_0x40e598(0x156)]()
+				[_0x40e598(0x1b1)](
+					"questions/" +
+						_0x5ccd89 +
+						"/" +
+						_0x386688 +
+						"/" +
+						_0x342f27 +
+						(_0x40e598(0x171) + "ел)")
+				)
+				["set"]({ Comment: _0x40e598(0x179) + _0x40e598(0x160) }),
+			(spanAnswer = _0x115c69[0x0]),
+			(spanAnswer[_0x40e598(0x15e)] = spanAnswer[_0x40e598(0x15e)][
+				_0x40e598(0x1a2)
+			](/<br>/g, "")),
+			(spanAnswer[_0x40e598(0x15e)] +=
+				_0x40e598(0x16f) +
+				_0x40e598(0x165) +
+				_0x40e598(0x149) +
+				_0x40e598(0x17a) +
+				"а,\x20подтвер" +
+				_0x40e598(0x15b) +
+				_0x40e598(0x14e) +
+				"\x20(нужно\x20на" +
+				_0x40e598(0x189) +
+				"равильный\x20" +
+				_0x40e598(0x159) +
+				_0x40e598(0x170) +
+				"font-size:" +
+				_0x40e598(0x15c) +
+				"шите\x20суда\x20" +
+				_0x40e598(0x18b) +
+				_0x40e598(0x176) +
+				_0x40e598(0x161) +
+				".\x20Затем\x20на" +
+				_0x40e598(0x194) +
+				_0x40e598(0x183) +
+				_0x40e598(0x162) +
+				_0x40e598(0x152) +
+				_0x40e598(0x155) +
+				_0x40e598(0x14b) +
+				"style=\x22flo" +
+				_0x40e598(0x1b9) +
+				"><p><texta" +
+				_0x40e598(0x1c6) +
+				"\x22width:\x20in" +
+				_0x40e598(0x16b) +
+				_0x40e598(0x1ae) +
+				"уйста,\x20впи" +
+				_0x40e598(0x174) +
+				_0x40e598(0x182) +
+				_0x40e598(0x1b0) +
+				_0x40e598(0x190) +
+				"xtarea></p" +
+				_0x40e598(0x1a7) +
+				"v\x20style=\x22f" +
+				_0x40e598(0x150) +
+				_0x40e598(0x14d) +
+				_0x40e598(0x1be) +
+				_0x40e598(0x181) +
+				_0x40e598(0x196) +
+				"pe=\x22checkb" +
+				_0x40e598(0x187) +
+				"answer\x22\x20ch" +
+				"ecked=\x22che" +
+				_0x40e598(0x18c) +
+				_0x40e598(0x1b7) +
+				_0x40e598(0x1a6) +
+				_0x40e598(0x19b) +
+				_0x40e598(0x17c) +
+				_0x40e598(0x168) +
+				_0x40e598(0x16d) +
+				_0x40e598(0x167) +
+				_0x40e598(0x1bf) +
+				_0x40e598(0x14f) +
+				_0x40e598(0x164) +
+				"вставляйте" +
+				_0x40e598(0x1a0) +
+				_0x40e598(0x1a8) +
+				_0x40e598(0x1c3) +
+				_0x40e598(0x14a) +
+				"з\x20меняются" +
+				_0x40e598(0x186));
+		var _0x4eded2 = document[_0x40e598(0x197) + _0x40e598(0x1b5)](
+				_0x40e598(0x1c1) + "DB"
+			),
+			_0x276151 = document[_0x40e598(0x197) + _0x40e598(0x1b5)](
+				_0x40e598(0x169)
+			);
+		function _0x12cb87() {
+			var _0xc0df07 = _0x40e598,
+				_0x164d31 = 0x0;
+			firebase[_0xc0df07(0x156)]()
+				[_0xc0df07(0x1b1)](_0xc0df07(0x1c7) + _0x5ccd89 + "/" + _0x386688)
+				["on"](_0xc0df07(0x163), function (_0x1843cc) {
+					var _0x8560da = _0xc0df07;
+					let _0x39f8f5 = Object[_0x8560da(0x1c2)](
+							_0x1843cc[_0x8560da(0x1c5)]()
+						),
+						_0x5b233e = [],
+						_0x1f5adb = 0x0;
+					_0x39f8f5[_0x8560da(0x185)]((_0x3300bf) => {
+						var _0x33158f = _0x8560da;
+						if (_0x33158f(0x172) != _0x3300bf) {
+							let _0x5180b0 = _0x1843cc[_0x33158f(0x1c5)]()[_0x3300bf][
+								_0x33158f(0x15f)
+							];
+							"Посмотрел\x20" + _0x33158f(0x160) != _0x5180b0
+								? ((_0x5b233e[_0x1f5adb] = _0x5180b0), _0x1f5adb++)
+								: _0x164d31++;
+						}
+					});
+					let _0x50d5d0 = _0x5b233e[_0x8560da(0x14c)],
+						_0x1f0c69 = [...new Set(_0x5b233e)],
+						_0x10f97d = [],
+						_0x252b4a = [],
+						_0x4f0bc3 = 0x0;
+					(_0x1f5adb = 0x0),
+						_0x1f0c69[_0x8560da(0x185)]((_0x4a9477) => {
+							var _0x235853 = _0x8560da;
+							const _0x31831e = _0x5b233e[_0x235853(0x16e)](
+								(_0x37cc81) => _0x37cc81 === _0x4a9477
+							);
+							(_0x10f97d[_0x1f5adb] = _0x31831e[_0x235853(0x14c)]),
+								(_0x252b4a[_0x1f5adb] = Math[_0x235853(0x1b3)](
+									(0x64 * _0x31831e["length"]) / _0x50d5d0
+								)),
+								_0x252b4a[_0x1f5adb] > _0x4f0bc3 &&
+									(_0x4f0bc3 = _0x252b4a[_0x1f5adb]),
+								_0x1f5adb++;
+						}),
+						_0x4126c6(
+							_0x8560da(0x1c8) +
+								"процент\x20от" +
+								_0x8560da(0x15a) +
+								_0x164d31 +
+								"👁",
+							0x1,
+							_0x8560da(0x1b8),
+							_0x386688,
+							_0x8560da(0x191) + _0x8560da(0x151) + _0x8560da(0x1a3),
+							_0x342f27
+						);
+					for (
+						var _0xb0318d = 0x0;
+						_0xb0318d < _0x1f0c69[_0x8560da(0x14c)];
+						++_0xb0318d
+					) {
+						let _0x865541 = _0x8560da(0x17d);
+						_0x252b4a[_0xb0318d] == _0x4f0bc3 && (_0x865541 = _0x8560da(0x17f)),
+							_0x1f0c69[_0xb0318d][_0x8560da(0x184)](_0x8560da(0x19e)) &&
+								(_0x865541 = _0x8560da(0x17b)),
+							_0x4126c6(
+								_0x1f0c69[_0xb0318d] +
+									_0x8560da(0x173) +
+									_0x252b4a[_0xb0318d] +
+									_0x8560da(0x15d) +
+									_0x10f97d[_0xb0318d] +
+									")",
+								_0xb0318d + 0x2,
+								_0x865541,
+								_0x386688,
+								_0x1f0c69[_0xb0318d],
+								_0x342f27
+							);
+					}
+				});
+		}
+		(_0x4eded2[_0x40e598(0x16a)] = function () {
+			var _0x46d036 = _0x40e598;
+			"" != _0x4eded2[_0x46d036(0x163)] &&
+				_0x407426(_0x386688, _0x4eded2[_0x46d036(0x163)], _0x342f27);
+		}),
+			(_0x276151[_0x40e598(0x153)] = function () {
+				var _0x3d2757 = _0x40e598;
+				"" != _0x4eded2[_0x3d2757(0x163)] &&
+					_0x407426(_0x386688, _0x4eded2[_0x3d2757(0x163)], _0x342f27);
+			}),
+			_0x12cb87();
 	}
-    
-}
-
-// дз - 2, +++++
-// дз - 3, +++++
-// дз - 4, +++++++++
+})();
